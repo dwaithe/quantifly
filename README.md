@@ -3,7 +3,7 @@
 </head>
 <body>
 <H1>QuantiFly</H1>
-<p> QuantiFly is a software package for automating egg counting in  <i>Drosophila</i> genetics research. QuantiFly is optimised for counting eggs in media containing vials, captured using a digital USB camera. QuantiFly utilises an advanced computer vison and machine learning algorithm. The technique uses a modified version of a density estimation approach which is a robust and accurate means of estimating numbers of objects in dense and complicated scenes.
+<p> QuantiFly is a software package for automating egg counting in  <i>Drosophila</i> genetics research. QuantiFly is optimised for counting eggs in media containing vials, captured using a digital USB camera. QuantiFly utilises an advanced computer vison and machine learning algorithm[1][2]. The technique uses a modified version of a density estimation approach which is a robust and accurate means of estimating numbers of objects in dense and complicated scenes.
 <H2>Source code</H2>
 <p>QuantiFly is open source and the python code files are included above. QuantiFly has multiple python dependencies.</p>
 
@@ -38,4 +38,11 @@
 <p>Q: Can QuantiFly be used to count other things?  A: Yes QuantiFly can be used to count just about anything of more-or-less constant size in 2D images.</p>
 
 <p> Dominic Waithe 2015 (c)</p>
+<p>[1] Victor Lempitsky and Andrew Zisserman. Learning to count objects in
+images. 2010.</p>
+<p>[2] Luca Fiaschi, Ullrich Koethe, Rahul Nair, and Fred A Hamprecht. Learning
+to count with regression forest and structured labels. In Pattern Recognition
+(ICPR), 2012 21st International Conference on, pages 2685{2688. IEEE,
+2012.</p>
+
 </body>
