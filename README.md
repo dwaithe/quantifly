@@ -11,7 +11,7 @@
 <p> The software which is available below provides immediate access to the QuantiFly technique. To install, just download the software, unzip and then double-click to run. 
 <H3>Download software</H3>
 <p><a href ="http://sara.molbiol.ox.ac.uk/dwaithe/software/QuantiFly_mac.zip">QuantiFly for Mac OS X </a> tested on Mavericks and Yosemite.</p>
-<p><a href ="http://sara.molbiol.ox.ac.uk/dwaithe/software/QuantiFly_linuz.tar.gz">QuantiFly for Linux</a> tested on Ubuntu 14.04 LTS. </p>
+<p><a href ="http://sara.molbiol.ox.ac.uk/dwaithe/software/QuantiFly_linux.tar.gz">QuantiFly for Linux</a> tested on Ubuntu 14.04 LTS. </p>
 <p><a href ="">QuantiFly for Windows</a> tested on Windows 7.0, coming soon. </p>
 <H3>Manual</H3>
 <p><a href ="http://sara.molbiol.ox.ac.uk/dwaithe/software/howTo.pdf">pdf manual for using QuantiFly</p>
@@ -29,12 +29,13 @@
 <p><a href ="http://sara.molbiol.ox.ac.uk/dwaithe/data/data10-bias-SY.zip">Dataset J</a> opaque media. </p>
 
 <H3>FAQ</H3>
-<p>Q: I've double-clicked the software and it takes a while to load? A: The first time the software is run it may take a little time to appear, the next time it will load almost instantly.</p>
+<p>Q: I've double-clicked the software and it takes a while to load? A: The first time the software is run, it may take a little while to appear, the next time it will load almost instantly.</p>
 
 <p>Q: What image types can I use with QuantiFly? A: QuantiFly is currently compatible with '.png' and '.tif' files. QuantiFly will also work '.tif' stacks but only if the colour space is RGB. If in doubt, download Fiji (<a href="fiji.sc/Downloads">fiji.sc/Downloads</a>) and convert your image to RGB and File->SaveAs 'tif'.
 
 <p>Q: I notice the datasets contain image files of two types, what are the ones with dot in the name? A: These are the ground-truth images which have been produced by a human researcher to analyse the accuracy of the technique. Each image contains a variety of dots which are spatially located to represent the egg in the corresponding image. To find the overall count you just need to count the dots. This can be done using Fiji in three steps: Open the image. Click from the menu Process->Find Maxima. Check 'Preview point selection' to see the overall count.
 
+<p>Q: Can QuantiFly be used to count other things?  A: Yes QuantiFly can be used to count just about anything of more-or-less constant size in 2D images.</p>
 
-
+<p> Dominic Waithe 2015 (c)</p>
 </body>
