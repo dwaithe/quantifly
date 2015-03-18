@@ -4,6 +4,8 @@
 <body>
 <H1>QuantiFly</H1>
 <p> QuantiFly is a software package for automating egg counting in  <i>Drosophila</i> genetics research. QuantiFly is optimised for counting eggs in media containing vials, captured using a digital USB camera. QuantiFly utilises an advanced computer vison and machine learning algorithm. The technique uses a modified version of a density estimation approach which is a robust and accurate means of estimating numbers of objects in dense and complicated scenes.
+<H2>Source code</H2>
+<p>QuantiFly is open source and the python code files are included above. QuantiFly has multiple python dependencies.</p>
 
 <H2>QuantiFly Software</H2>
 <p> The software which is available below provides immediate access to the QuantiFly technique. To install, just download the software, unzip and then double-click to run. 
