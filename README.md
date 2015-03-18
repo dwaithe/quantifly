@@ -3,14 +3,16 @@
 </head>
 <body>
 <H1>QuantiFly</H1>
+<p> QuantiFly is a software package which utilises an advanced computer vison and machine learningn algorithm for automating and speeding up the counting of <italics>Drosophila</italics> eggs in media containing vials. The technique uses a modified version of a density estimation approach which is a robust and accurate means of estimating numbers of objects in dense and complicated scenes.
+
 <H2>QuantiFly Software</H2>
-<p> The software which is available below provides immediate access to the QuantiFly technique. To install, just download the software, unzip and then double-click to run. Note: 
+<p> The software which is available below provides immediate access to the QuantiFly technique. To install, just download the software, unzip and then double-click to run. 
 <H3>Download software</H3>
-<p><a href ="http://sara.molbiol.ox.ac.uk/dwaithe/software/QuantiFly_mac.zip">QuantiFly for mac Os x </a> tested on Mavericks and Yosemite.</p>
-<p><a href ="http://sara.molbiol.ox.ac.uk/dwaithe/software/QuantiFly_linuz.tar.gz">QuantiFly for Linux</a> tested on Ubuntu. </p>
+<p><a href ="http://sara.molbiol.ox.ac.uk/dwaithe/software/QuantiFly_mac.zip">QuantiFly for Mac OS X </a> tested on Mavericks and Yosemite.</p>
+<p><a href ="http://sara.molbiol.ox.ac.uk/dwaithe/software/QuantiFly_linuz.tar.gz">QuantiFly for Linux</a> tested on Ubuntu 14.04 LTS. </p>
 <p><a href ="">QuantiFly for Windows</a> tested on Windows 7.0, coming soon. </p>
 <H3>Manual</H3>
-<p><a href ="http://sara.molbiol.ox.ac.uk/dwaithe/software/howto.pdf">pdf manual for using QuantiFly</p>
+<p><a href ="http://sara.molbiol.ox.ac.uk/dwaithe/software/howTo.pdf">pdf manual for using QuantiFly</p>
 <H3>Datasets</H3>
 <p> The following datasets provide examples of the images on which QuantiFly was designed to operate </p>
 <p><a href ="http://sara.molbiol.ox.ac.uk/dwaithe/data/data01-20130531-DM.zip">Dataset A</a>transparent media. </p>
