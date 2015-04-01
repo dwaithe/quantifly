@@ -12,7 +12,7 @@
 <H3>Download software</H3>
 <p><a href ="http://sara.molbiol.ox.ac.uk/dwaithe/software/QuantiFly_mac.zip">QuantiFly for Mac OS X </a> tested on Mavericks and Yosemite.</p>
 <p><a href ="http://sara.molbiol.ox.ac.uk/dwaithe/software/QuantiFly_linux.tar.gz">QuantiFly for Linux</a> tested on Ubuntu 14.04 LTS. </p>
-<p><a href ="">QuantiFly for Windows</a> tested on Windows 7.0, coming soon. </p>
+<p><a href ="http://sara.molbiol.ox.ac.uk/dwaithe/software/QuantiFly_win.zip">QuantiFly for Windows</a> tested on Windows 7.0 </p>
 <H3>Manual</H3>
 <p><a href ="http://sara.molbiol.ox.ac.uk/dwaithe/software/howTo.pdf">pdf manual for using QuantiFly</p>
 <H3>Datasets</H3>
