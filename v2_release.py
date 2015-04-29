@@ -1,22 +1,24 @@
-#Experimental interface
+#Main script for running QuantiFly training.
+import time
 import numpy as np
 from PyQt4 import QtGui, QtCore,QtWebKit
-import time
 import errno
-#import matplotlib.pyplot as plt
-import matplotlib.lines as lines
-from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
-from matplotlib.figure import Figure
-#matplotlib.pyplot.close() 
+import os
+import os.path
 import re
 import cPickle as pickle
-import os
 import sys
-import os.path
-import v2_functions as v2
+
 from scipy.special import _ufuncs_cxx
 import sklearn.utils.lgamma
 from gnu import return_license
+import matplotlib.lines as lines
+from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
+from matplotlib.figure import Figure
+import v2_functions as v2
+
+
+
 
 
 """QuantiFly Software v2.0
@@ -48,10 +50,15 @@ class fileDialog(QtGui.QMainWindow):
         self.parent.config ={}
 
         try:
-            self.parent.config = pickle.load(open(os.path.expanduser('~')+'/densitycount/config.p', "rb" ));
+            self.parent.config = pickle.load(open(os.path.expanduser('~')+'/.densitycount/config.p', "rb" ));
             self.parent.filepath = self.parent.config['filepath']
         except:
             self.parent.filepath = os.path.expanduser('~')+'/'
+            try:
+                os.makedirs(os.path.expanduser('~')+'/.densitycount/')
+            except:
+                'unable to make directory: ',os.path.expanduser('~')+'/.densitycount/'
+
         
     def initUI(self):      
 
@@ -85,7 +92,7 @@ class fileDialog(QtGui.QMainWindow):
 
             
             self.parent.config['filepath'] = str(QtCore.QFileInfo(path).absolutePath())+'/'
-            pickle.dump(self.parent.config, open(str(os.path.expanduser('~')+'/densitycount/config.p'), "w" ))
+            pickle.dump(self.parent.config, open(str(os.path.expanduser('~')+'/.densitycount/config.p'), "w" ))
             
         self.parent.image_status_text.showMessage('Status: Loading Images. ')                
         success, updateText = v2.import_data_fn(par_obj, par_obj.file_array)
@@ -280,7 +287,7 @@ class Load_win_fn(QtGui.QWidget):
         
         # And give it a layout
         layout = QtGui.QVBoxLayout()
-        self.about_win.setLayout(layout)
+        
         self.view = QtWebKit.QWebView()
         self.view.setHtml('''
           <html>
@@ -321,7 +328,6 @@ class Load_win_fn(QtGui.QWidget):
         self.confirmImages_button.setEnabled(True)
         
         self.plt1.cla()
-        print 'where it is ', par_obj.ex_img.shape
         self.plt1.imshow(255-par_obj.ex_img)
         self.plt1.set_xticklabels([])
         self.plt1.set_yticklabels([])
@@ -1055,8 +1061,8 @@ class Win_fn(QtGui.QWidget):
         v2.eval_pred_show_fn(par_obj.curr_img,par_obj,self)
 
     def saveForestFn(self):
-        print os.environ['HOME']
-        path = os.environ['HOME']+'/densitycount/models/'
+        
+        path = os.path.expanduser('~')+'/.densitycount/models/'
         try:
             os.makedirs(path)
         except OSError as exception:

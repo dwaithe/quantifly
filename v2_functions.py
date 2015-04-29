@@ -58,8 +58,9 @@ def calculateCI(data1,data2, test_value):
     s_err = np.sum(np.power(y_err,2))   # sum of the squares of the residuals
 
     #This calculates the error for one point, pxx
+    
     confs = t * np.sqrt((s_err/(n-2))*(1.0/n + (np.power((( test_value)+mean_x),2)/ ((np.sum(np.power(x,2)))-n*(np.power(mean_x,2))))))
-
+    
     #We then modulate the point we the calculated correction +/- the Confidence interval.
     p_up =  test_value +abs(confs)
     p_dn =  test_value -abs(confs)
@@ -332,7 +333,7 @@ def feature_create(par_obj,imRGB,imStr,i):
         if (par_obj.feature_type == 'fineSpatial'):
             imG = imRGB[:,:,par_obj.ch_active[b]].astype(np.float32)
             feat[:,:,(b*23):((b+1)*23)] = local_shape_features_fine_spatial(imG,par_obj.feature_scale,i)
-    pickle.dump(feat,open(imStr[:-4]+'_'+str(i)+'.p', "wb"),protocol=2)
+    #pickle.dump(feat,open(imStr[:-4]+'_'+str(i)+'.p', "wb"),protocol=2)
     return feat
     
 def evaluate_forest(par_obj,int_obj,withGT,model_num,inline=False,inner_loop=None,outer_loop=None,count=None):

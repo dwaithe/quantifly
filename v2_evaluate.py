@@ -8,8 +8,6 @@ import scipy
 from scipy.ndimage import filters
 from scipy.sparse.csgraph import _validation
 from sklearn.ensemble import ExtraTreesRegressor
-from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
-from matplotlib.figure import Figure
 import thread
 import random
 import csv
@@ -18,11 +16,29 @@ import datetime
 import errno
 import os
 import numpy as np
-import v2_functions as v2
+
 import datetime
 from scipy.special import _ufuncs_cxx
 import sklearn.utils.lgamma
 from gnu import return_license
+
+#Apparently matplotlib slows the loading drammatically due to a font cache issue. This resolves it.
+try:
+    #mac location.
+    os.remove(os.path.expanduser('~')+'/.matplotlib/fontList.cache')
+    print 'removing matplotlib cache'
+except:
+    pass
+try:
+    #Alternate location.
+    os.remove(os.path.expanduser('~')+'/.cache/matplotlib')
+    print 'removing matplotlib cache'
+except:
+    pass
+
+from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
+from matplotlib.figure import Figure
+import v2_functions as v2
 
 """QuantiFly Software v2.0
 
@@ -119,7 +135,7 @@ class Eval_load_im_win(QtGui.QWidget):
         
         # And give it a layout
         layout = QtGui.QVBoxLayout()
-        self.about_win.setLayout(layout)
+        
         self.view = QtWebKit.QWebView()
         self.view.setHtml('''
           <html>
@@ -153,11 +169,13 @@ class Eval_load_im_win(QtGui.QWidget):
 class Eval_load_model_win(QtGui.QWidget):
     """Interface which allows selection of model."""
     def __init__(self,par_obj):
-        super(Eval_load_model_win, self).__init__()
+        
+        super(Eval_load_model_win,self).__init__()
         
         #The main layout
         box = QtGui.QVBoxLayout()
         self.setLayout(box)
+        
         hbox0 = QtGui.QHBoxLayout()
         box.addLayout(hbox0)
         #The two principle columns
@@ -182,7 +200,7 @@ class Eval_load_model_win(QtGui.QWidget):
         filesLen =filesRF.__len__()
 
       
-        self.modelTabFor = QtGui.QTableWidget(self)
+        self.modelTabFor = QtGui.QTableWidget()
         self.modelTabFor.setRowCount(1)
         self.modelTabFor.setColumnCount(3)
         self.modelTabFor.setColumnWidth(2,200)
@@ -206,7 +224,7 @@ class Eval_load_model_win(QtGui.QWidget):
         self.image_status_text.showMessage('Status: Please click a model from above and then click \'Load Model\'. ')
 
         #The second column.
-        self.modelIm_panel = QtGui.QHBoxLayout(self)
+        self.modelIm_panel = QtGui.QHBoxLayout()
 
         self.figure1 = Figure(figsize=(3, 3), dpi=100)
         self.canvas1 = FigureCanvas(self.figure1)
@@ -688,7 +706,7 @@ class File_Dialog(QtGui.QMainWindow):
         self.setWindowTitle('File dialog')
         self.par_obj.config ={}
         try:
-            self.par_obj.config = pickle.load(open(os.path.expanduser('~')+'/densitycount/config.p', "rb" ));
+            self.par_obj.config = pickle.load(open(os.path.expanduser('~')+'/.densitycount/config.p', "rb" ));
             self.par_obj.filepath = self.par_obj.config['evalpath']
         except:
             self.par_obj.filepath = os.path.expanduser('~')+'/'
@@ -703,8 +721,9 @@ class File_Dialog(QtGui.QMainWindow):
             par_obj.file_array.append(path)
         
         self.par_obj.config['evalpath'] = str(QtCore.QFileInfo(path).absolutePath())+'/'
-        pickle.dump(self.par_obj.config, open(str(os.path.expanduser('~')+'/densitycount/config.p'), "w" ))
-            
+        pickle.dump(self.par_obj.config, open(str(os.path.expanduser('~')+'/.densitycount/config.p'), "w" ))
+        self.par_obj.csvPath = self.par_obj.config['evalpath']
+        
 
 
 
@@ -843,18 +862,15 @@ class Parameter_class:
         self.height = 0
         self.width = 0
         self.fresh_features = True
-        self.forPath = os.environ['HOME']+'/densitycount/models/'
+        self.forPath = os.path.expanduser('~')+'/.densitycount/models/'
         try:
             os.makedirs(self.forPath)
         except OSError as exception:
             if exception.errno != errno.EEXIST:
                 raise
-        self.csvPath = os.environ['HOME']+'/densitycount/output/'
-        try:
-            os.makedirs(self.csvPath)
-        except OSError as exception:
-            if exception.errno != errno.EEXIST:
-                raise
+
+        self.csvPath = os.path.expanduser('~')+'/'
+        
 
 
 
