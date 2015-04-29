@@ -2,7 +2,7 @@
 import pylab
 from PyQt4 import QtGui, QtCore, Qt, QtWebKit
 import time
-import cv2
+
 import vigra
 import scipy
 from scipy.ndimage import filters
@@ -723,7 +723,7 @@ class File_Dialog(QtGui.QMainWindow):
         self.par_obj.config['evalpath'] = str(QtCore.QFileInfo(path).absolutePath())+'/'
         pickle.dump(self.par_obj.config, open(str(os.path.expanduser('~')+'/.densitycount/config.p'), "w" ))
         self.par_obj.csvPath = self.par_obj.config['evalpath']
-        
+
 
 
 
