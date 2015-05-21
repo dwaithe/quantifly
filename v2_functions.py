@@ -333,7 +333,8 @@ def feature_create(par_obj,imRGB,imStr,i):
         if (par_obj.feature_type == 'fineSpatial'):
             imG = imRGB[:,:,par_obj.ch_active[b]].astype(np.float32)
             feat[:,:,(b*23):((b+1)*23)] = local_shape_features_fine_spatial(imG,par_obj.feature_scale,i)
-    #pickle.dump(feat,open(imStr[:-4]+'_'+str(i)+'.p', "wb"),protocol=2)
+    if par_obj.fresh_features == False:
+        pickle.dump(feat,open(imStr[:-4]+'_'+str(i)+'.p', "wb"),protocol=2)
     return feat
     
 def evaluate_forest(par_obj,int_obj,withGT,model_num,inline=False,inner_loop=None,outer_loop=None,count=None):
@@ -777,7 +778,7 @@ def save_output_data_fn(par_obj,int_obj):
                
             with open(par_obj.csvPath+'outputData.csv', 'a') as csvfile:
                 spamwriter = csv.writer(csvfile,  dialect='excel')
-                spamwriter.writerow([local_time]+[str(imStr)]+['-'+str(i)]+[par_obj.sum_pred[count]]+[par_obj.CC[count]]+[par_obj.upperCI[count]])
+                spamwriter.writerow([local_time]+[str(imStr)]+[str(i+1)]+[par_obj.sum_pred[count]]+[par_obj.CC[count]]+[par_obj.upperCI[count]])
                 
 
     int_obj.report_progress('Data exported to '+ par_obj.csvPath)
