@@ -320,7 +320,7 @@ class Load_win_fn(QtGui.QWidget):
         if par_obj.file_ext == 'tif' or par_obj.file_ext == 'tiff':
             if par_obj.tiff_file.maxFrames >1:
                 self.linEdit_Frm.setText('1-'+str(par_obj.uploadLimit))
-                self.Text_FrmOpt2.setText('There are '+str(par_obj.tiff_file.maxFrames)+' frames in total.')
+                self.Text_FrmOpt2.setText('There are '+str(par_obj.tiff_file.maxFrames+1)+' frames in total.')
                 self.Text_FrmOpt1.show()
                 self.Text_FrmOpt2.show()
                 self.linEdit_Frm.show()

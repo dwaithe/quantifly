@@ -419,7 +419,7 @@ class Eval_load_model_win(QtGui.QWidget):
             if par_obj.tiff_file.maxFrames>1:
                 for i in range(0,par_obj.file_array.__len__()):
                     par_obj.left_2_calc.append(i)
-                    par_obj.frames_2_load[i] = range(0,par_obj.tiff_file.maxFrames)
+                    par_obj.frames_2_load[i] = range(0,par_obj.tiff_file.maxFrames+1)
                     #try:
                     #    np.array(list(self.hyphen_range(fmStr)))-1
                     #    par_obj.frames_2_load[i] = np.array(list(self.hyphen_range(fmStr)))-1
