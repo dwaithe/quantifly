@@ -38,7 +38,7 @@
 <p>Q: Can QuantiFly be used to count other things?  A: Yes QuantiFly can be used to count just about anything of more-or-less constant size in 2D images.</p>
 
 <p> Dominic Waithe 2015 (c)</p>
-<p>[2] Waithe, Dominic, et al. "QuantiFly: Robust Trainable Software for Automated Drosophila Egg Counting." (2015): e0127659.</p>
+<p>[1] Waithe, Dominic, et al. "QuantiFly: Robust Trainable Software for Automated Drosophila Egg Counting." (2015): e0127659.</p>
 <p>[2] Lempitsky, Victor, and Andrew Zisserman. "Learning to count objects in images." Advances in Neural Information Processing Systems. 2010.</p>
 <p>[3] Fiaschi, Luca, et al. "Learning to count with regression forest and structured labels." Pattern Recognition (ICPR), 2012 21st International Conference on. IEEE, 2012.</p>
 
