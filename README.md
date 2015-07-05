@@ -11,7 +11,7 @@
 
 <H2>QuantiFly Software</H2>
 <p> The software which is available through the following link allows immediate access to the QuantiFly technique:
-<p><a href ="http://sara.molbiol.ox.ac.uk/dwaithe/download_page.html#FoCuS">Click for downloads</a></p>
+<p><a href ="http://sara.molbiol.ox.ac.uk/dwaithe/download_page.html#QuantiFly">Click for downloads</a></p>
 <H3>Manual</H3>
 <p><a href ="http://sara.molbiol.ox.ac.uk/dwaithe/software/howTo.pdf">pdf manual for using QuantiFly</p>
 <H3>Datasets</H3>
