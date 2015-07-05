@@ -1,15 +1,6 @@
 <html>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-64801147-1', 'auto');
-  ga('require', 'linkid', 'linkid.js');
-  ga('send', 'pageview');
 
-</script>
 <head>
 </head>
 <body>
@@ -19,11 +10,8 @@
 <p>QuantiFly is open source and the python code files are included above. QuantiFly has multiple python dependencies.</p>
 
 <H2>QuantiFly Software</H2>
-<p> The software which is available below provides immediate access to the QuantiFly technique. To install, just download the software, unzip and then double-click to run. 
-<H3>Download software</H3>
-<p><a href ="http://sara.molbiol.ox.ac.uk/dwaithe/software/quantifly_mac.zip">QuantiFly for Mac OS X </a> tested on Mavericks and Yosemite.</p>
-<p><a href ="http://sara.molbiol.ox.ac.uk/dwaithe/software/quantifly_linux.tar.gz">QuantiFly for Linux</a> tested on Ubuntu 14.04 LTS. </p>
-<p><a href ="http://sara.molbiol.ox.ac.uk/dwaithe/software/quantifly_win.zip">QuantiFly for Windows</a> tested on Windows 7.0 </p>
+<p> The software which is available through the following link allows immediate access to the QuantiFly technique:
+<p><a href ="http://sara.molbiol.ox.ac.uk/dwaithe/download_page.html#FoCuS">Click for downloads</a></p>
 <H3>Manual</H3>
 <p><a href ="http://sara.molbiol.ox.ac.uk/dwaithe/software/howTo.pdf">pdf manual for using QuantiFly</p>
 <H3>Datasets</H3>
