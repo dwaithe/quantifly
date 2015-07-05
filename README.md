@@ -20,6 +20,7 @@
 <p><a href ="http://sara.molbiol.ox.ac.uk/dwaithe/download_page.html#QuantiFly">Click for downloads</a></p>
 
 <H3>FAQ</H3>
+<p>Q: I have found a bug in the code how can I report it? A: Goto <a href="https://github.com/dwaithe/quantifly/issues">https://github.com/dwaithe/quantifly/issues</a>. You can report issues or ask any questions here.</p>
 <p>Q: I've double-clicked the software and it takes a while to load? A: The first time the software is run, it may take a little while to appear, the next time it will load almost instantly.</p>
 
 <p>Q: What image types can I use with QuantiFly? A: QuantiFly is currently compatible with '.png' and '.tif' files. QuantiFly will also work '.tif' stacks but only if the colour space is RGB. If in doubt, download Fiji (<a href="fiji.sc/Downloads">fiji.sc/Downloads</a>) and convert your image to RGB and File->SaveAs 'tif'.
