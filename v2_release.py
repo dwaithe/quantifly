@@ -1085,19 +1085,19 @@ class Win_fn(QtGui.QWidget):
             cent_y = np.floor(par_obj.save_im.shape[0]/2).astype(np.int32)
             cent_x = np.floor(par_obj.save_im.shape[1]/2).astype(np.int32)
             if par_obj.save_im.shape[2]> 2:
-                save_im[:,:,0] =  par_obj.save_im[cent_y-150:cent_y+150, cent_x-150:cent_x+150,2]
+                save_im[:,:,0] =  par_obj.save_im[cent_y-150:cent_y+150, cent_x-150:cent_x+150,0]
                 save_im[:,:,1] =  par_obj.save_im[cent_y-150:cent_y+150, cent_x-150:cent_x+150,1]
-                save_im[:,:,2] =  par_obj.save_im[cent_y-150:cent_y+150, cent_x-150:cent_x+150,0]
+                save_im[:,:,2] =  par_obj.save_im[cent_y-150:cent_y+150, cent_x-150:cent_x+150,2]
             else:
                 save_im[:,:,0] =  par_obj.save_im[cent_y-150:cent_y+150, cent_x-150:cent_x+150,0]
-                save_im[:,:,1] =  par_obj.save_im[cent_y-150:cent_y+150, cent_x-150:cent_x+150,0]
-                save_im[:,:,2] =  par_obj.save_im[cent_y-150:cent_y+150, cent_x-150:cent_x+150,0]
+                save_im[:,:,1] =  par_obj.save_im[cent_y-150:cent_y+150, cent_x-150:cent_x+150,1]
+                save_im[:,:,2] =  par_obj.save_im[cent_y-150:cent_y+150, cent_x-150:cent_x+150,2]
         else:
             save_im = np.zeros((par_obj.save_im.shape[0], par_obj.save_im.shape[1], 3))
             if par_obj.save_im.shape[2]> 2:
-                save_im[:,:,0] = par_obj.save_im[:, :, 2]
+                save_im[:,:,0] = par_obj.save_im[:, :, 0]
                 save_im[:,:,1] = par_obj.save_im[:, :, 1]
-                save_im[:,:,2] = par_obj.save_im[:, :, 0]
+                save_im[:,:,2] = par_obj.save_im[:, :, 2]
             else:
                 save_im[:,:,0] = par_obj.save_im[:, :,0]
                 save_im[:,:,1] = par_obj.save_im[:, :,0]
@@ -1140,8 +1140,11 @@ class checkBoxCH(QtGui.QCheckBox):
             elif par_obj.ch_active.__len__() ==1:
                 newImg = par_obj.ex_img[:, :, par_obj.ch_active[0]]
             loadWin.plt1.cla()
-            loadWin.plt1.imshow(255-newImg)
-            loadWin.draw_saved_dots_and_roi()
+            loadWin.plt1.imshow(newImg)
+            try:
+                loadWin.draw_saved_dots_and_roi()
+            except:
+                pass
             loadWin.plt1.set_xticklabels([])
             loadWin.plt1.set_yticklabels([])
             loadWin.canvas1.draw()

@@ -21,19 +21,6 @@ from scipy.special import _ufuncs_cxx
 import sklearn.utils.lgamma
 from gnu import return_license
 
-#Apparently matplotlib slows the loading drammatically due to a font cache issue. This resolves it.
-try:
-    #mac location.
-    os.remove(os.path.expanduser('~')+'/.matplotlib/fontList.cache')
-    print 'removing matplotlib cache'
-except:
-    pass
-try:
-    #Alternate location.
-    os.remove(os.path.expanduser('~')+'/.cache/matplotlib')
-    print 'removing matplotlib cache'
-except:
-    pass
 
 from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure
@@ -234,7 +221,7 @@ class Eval_load_model_win(QtGui.QWidget):
         im_RGB = np.zeros((300, 300))
         #Makes sure it spans the whole figure.
         self.figure1.subplots_adjust(left=0.001, right=0.999, top=0.999, bottom=0.001)
-        self.plt1.imshow(im_RGB)
+        self.plt1.imshow(255-im_RGB)
 
         #Removes the tick labels
         self.plt1.set_xticklabels([])
@@ -375,7 +362,7 @@ class Eval_load_model_win(QtGui.QWidget):
             par_obj.file_ext = save_file["file_ext"]
             par_obj.gt_vec = save_file["gt_vec"]
             par_obj.error_vec = save_file["error_vec"]
-            save_im = 255-save_file["imFile"]
+            save_im = save_file["imFile"]
             self.image_status_text.showMessage('Status: Model loaded. ')
             success = True
             
@@ -595,6 +582,7 @@ class Eval_disp_im_win(QtGui.QWidget):
                 v2.im_pred_inline_fn(par_obj, self,inline=True,outer_loop=b,inner_loop=i,count=count)
                 v2.evaluate_forest(par_obj,self, False, 0,inline=True,outer_loop=b,inner_loop=i,count=count)
                 count = count+1
+        
         v2.apply_correction(par_obj)
 
         self.save_output_data_btn.setEnabled(True)
@@ -664,7 +652,7 @@ class checkBoxCH(QtGui.QCheckBox):
             elif par_obj.ch_active.__len__() ==1:
                 newImg = par_obj.ex_img[:, :, par_obj.ch_active[0]]
             loadWin.plt1.cla()
-            loadWin.plt1.imshow(255-newImg)
+            loadWin.plt1.imshow(newImg)
             loadWin.draw_saved_dots_and_roi()
             loadWin.plt1.set_xticklabels([])
             loadWin.plt1.set_yticklabels([])

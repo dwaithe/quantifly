@@ -74,34 +74,37 @@ def apply_correction(par_obj,withGT=False):
     par_obj.CC2 ={}
     par_obj.lowerCI ={}
     par_obj.upperCI ={}
-        
-    for i in range(par_obj.test_im_start,par_obj.test_im_end):
-        test_value = ((par_obj.sum_pred[i]*par_obj.M)+par_obj.c)
-        p_dn,p_up  = calculateCI(par_obj.gt_vec, par_obj.error_vec, test_value);
     
-        
-        
-        par_obj.CC[i] = par_obj.sum_pred[i]-((par_obj.sum_pred[i]*par_obj.M)+par_obj.c)
-        par_obj.lowerCI[i] = abs(par_obj.sum_pred[i]-p_dn)-par_obj.CC[i]
-        par_obj.upperCI[i] = abs(par_obj.sum_pred[i]-p_up)-par_obj.CC[i]
-        
-        print('corrected value: '+str(par_obj.CC[i]))
-        if withGT == True:
-            par_obj.CC_absErr = np.abs(par_obj.CC[i]-par_obj.gt_sum[i])
-            par_obj.CC_perErr = (np.abs(par_obj.CC[i]-par_obj.gt_sum[i])*100)/par_obj.gt_sum[i]
-            print('Ground Truth count: '+str(par_obj.gt_sum[i]))
-            print('corrected Absolute ERROR: '+str(np.abs(par_obj.CC[i]-par_obj.gt_sum[i])))
-            print('corrected Percentage ERROR: '+str((np.abs(par_obj.CC[i]-par_obj.gt_sum[i])*100)/par_obj.gt_sum[i]))
+    if par_obj.gt_vec != None:
+        for i in range(par_obj.test_im_start,par_obj.test_im_end):
+            test_value = ((par_obj.sum_pred[i]*par_obj.M)+par_obj.c)
+            p_dn,p_up  = calculateCI(par_obj.gt_vec, par_obj.error_vec, test_value);
+            
+            
+            
+            par_obj.CC[i] = par_obj.sum_pred[i]-((par_obj.sum_pred[i]*par_obj.M)+par_obj.c)
+            par_obj.lowerCI[i] = abs(par_obj.sum_pred[i]-p_dn)-par_obj.CC[i]
+            par_obj.upperCI[i] = abs(par_obj.sum_pred[i]-p_up)-par_obj.CC[i]
+            
+            print('corrected value: '+str(par_obj.CC[i]))
+            if withGT == True:
+                par_obj.CC_absErr = np.abs(par_obj.CC[i]-par_obj.gt_sum[i])
+                par_obj.CC_perErr = (np.abs(par_obj.CC[i]-par_obj.gt_sum[i])*100)/par_obj.gt_sum[i]
+                print('Ground Truth count: '+str(par_obj.gt_sum[i]))
+                print('corrected Absolute ERROR: '+str(np.abs(par_obj.CC[i]-par_obj.gt_sum[i])))
+                print('corrected Percentage ERROR: '+str((np.abs(par_obj.CC[i]-par_obj.gt_sum[i])*100)/par_obj.gt_sum[i]))
 
 def make_correction(par_obj,model_num,withGT=False):
     #Makes linear correction to model data.
     par_obj.error_vec =[];
-    pred_vec=[];
-    par_obj.gt_vec =[];
+    pred_vec=None;
+    par_obj.gt_vec = None;
    
     par_obj.M = 1
     par_obj.c = 0
     if par_obj.saved_ROI.__len__()>2:
+        pred_vec=[];
+        par_obj.gt_vec =[];
         for b in range(0,par_obj.saved_ROI.__len__()):
             #Iterates through saved ROI.
             rects = par_obj.saved_ROI[b]
@@ -664,8 +667,9 @@ def eval_pred_show_fn(im_num,par_obj,int_obj):
     if par_obj.eval_load_im_win_eval == True:
         int_obj.image_num_txt.setText('The Current Image is No. ' + str(par_obj.curr_img+1))
         
-        string_2_show = 'The Predicted Count: ' + str(round(par_obj.sum_pred[im_num],1)) 
-        if par_obj.saved_ROI.__len__()>2:
+        string_2_show = 'The Predicted Count: ' + str(round(par_obj.sum_pred[im_num],1))
+        
+        if par_obj.gt_vec != None:
             if par_obj.upperCI[im_num] < 1000:
                 string_2_show += ' with bias correction: '+str(round(par_obj.CC[im_num],1))+' +\- CI '+str(np.round(par_obj.upperCI[im_num],2))+''
         int_obj.output_count_txt.setText(string_2_show)
@@ -783,7 +787,10 @@ def save_output_data_fn(par_obj,int_obj):
                
             with open(par_obj.csvPath+'outputData.csv', 'a') as csvfile:
                 spamwriter = csv.writer(csvfile,  dialect='excel')
-                spamwriter.writerow([local_time]+[str(imStr)]+[str(i+1)]+[par_obj.sum_pred[count]]+[par_obj.CC[count]]+[par_obj.upperCI[count]])
+                string2print = [local_time]+[str(imStr)]+[str(i+1)]+[par_obj.sum_pred[count]]
+                if par_obj.gt_vec != None:
+                    string2print += [par_obj.CC[count]]+[par_obj.upperCI[count]]
+                spamwriter.writerow( string2print)
                 
 
     int_obj.report_progress('Data exported to '+ par_obj.csvPath)
