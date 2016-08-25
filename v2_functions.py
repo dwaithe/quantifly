@@ -100,19 +100,20 @@ def make_correction(par_obj,model_num,withGT=False):
     par_obj.gt_vec =[];
    
     
+    if par_obj.saved_ROI.__len__()>2:
+        for b in range(0,par_obj.saved_ROI.__len__()):
+            #Iterates through saved ROI.
+            rects = par_obj.saved_ROI[b]
+            par_obj.gt_vec.append(np.sum(par_obj.dense_array[rects[0]][rects[2]+1:rects[2]+rects[4],rects[1]+1:rects[1]+rects[3]])/255)
+            pred_vec.append(np.sum(par_obj.pred_arr[rects[0]][rects[2]+1:rects[2]+rects[4],rects[1]+1:rects[1]+rects[3]])/255)
+            par_obj.error_vec.append(pred_vec[-1]-par_obj.gt_vec[-1])
+            
+        #Fits straight-line to data.
 
-    for b in range(0,par_obj.saved_ROI.__len__()):
-        #Iterates through saved ROI.
-        rects = par_obj.saved_ROI[b]
-        par_obj.gt_vec.append(np.sum(par_obj.dense_array[rects[0]][rects[2]+1:rects[2]+rects[4],rects[1]+1:rects[1]+rects[3]])/255)
-        pred_vec.append(np.sum(par_obj.pred_arr[rects[0]][rects[2]+1:rects[2]+rects[4],rects[1]+1:rects[1]+rects[3]])/255)
-        par_obj.error_vec.append(pred_vec[-1]-par_obj.gt_vec[-1])
-        
-    #Fits straight-line to data.
-    M, c = np.polyfit(par_obj.gt_vec, par_obj.error_vec,1)
-    par_obj.M = M
-    par_obj.c = c
-    apply_correction(par_obj,withGT)
+            M, c = np.polyfit(par_obj.gt_vec, par_obj.error_vec,1)
+            par_obj.M = M
+            par_obj.c = c
+            apply_correction(par_obj,withGT)
 
 
     
@@ -661,8 +662,9 @@ def eval_pred_show_fn(im_num,par_obj,int_obj):
         int_obj.image_num_txt.setText('The Current Image is No. ' + str(par_obj.curr_img+1))
         
         string_2_show = 'The Predicted Count: ' + str(round(par_obj.sum_pred[im_num],1)) 
-        if par_obj.upperCI[im_num] < 1000:
-            string_2_show += ' with bias correction: '+str(round(par_obj.CC[im_num],1))+' +\- CI '+str(np.round(par_obj.upperCI[im_num],2))+''
+        if par_obj.saved_ROI.__len__()>2:
+            if par_obj.upperCI[im_num] < 1000:
+                string_2_show += ' with bias correction: '+str(round(par_obj.CC[im_num],1))+' +\- CI '+str(np.round(par_obj.upperCI[im_num],2))+''
         int_obj.output_count_txt.setText(string_2_show)
         int_obj.plt2.cla()
         int_obj.plt2.imshow(par_obj.pred_arr[im_num].astype(np.float32))

@@ -846,8 +846,8 @@ class Win_fn(QtGui.QWidget):
         self.plt1.autoscale(False)
         self.plt1.plot([rects[1], rects[1]+rects[3]], [rects[2],rects[2]], '-',color=colour)
         self.plt1.plot([rects[1]+rects[3], rects[1]+rects[3]], [rects[2],rects[2]+rects[4]], '-',color=colour)
-        self.plt1.plot([rects[1]+rects[3], rects[1]], [rects[2]+rects[4],rects[2]+rects[4]], '-',  figure=self.plt1,color=colour)
-        self.plt1.plot([rects[1], rects[1]], [rects[2]+rects[4],rects[2]], '-',  figure=self.plt1,color=colour)
+        self.plt1.plot([rects[1]+rects[3], rects[1]], [rects[2]+rects[4],rects[2]+rects[4]], '-',color=colour)
+        self.plt1.plot([rects[1], rects[1]], [rects[2]+rects[4],rects[2]], '-',color=colour)
         
 
             #Draws dots in list
