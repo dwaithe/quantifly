@@ -8,8 +8,6 @@ print 'loading os'
 import os
 print 'loading vigra'
 import vigra
-print 'loading pylab'
-import pylab
 print 'loading csv'
 import csv
 print 'loading time'
@@ -297,7 +295,8 @@ def im_pred_inline_fn(par_obj, int_obj,inline=False,outer_loop=None,inner_loop=N
                     temp = Tiff_Controller(imStr)
                     imRGB = temp.get_frame(i)
                 elif par_obj.file_ext == 'png':
-                    imRGB = pylab.imread(str(imStr))*255
+                    
+                    imRGB = np.array(PIL.Image.open(str(imStr)))*255
                 if par_obj.fresh_features == False:
                     try:
                         #Try loading features.
@@ -397,7 +396,8 @@ def evaluate_forest(par_obj,int_obj,withGT,model_num,inline=False,inner_loop=Non
                     a = par_obj.gt_sum[count]
                 except:
                     #Else find the file.
-                    gt_im =  pylab.imread(par_obj.gt_array[count])[:,:,0]
+                    gt_im = np.array(PIL.Image.open(par_obj.gt_array[count]))[:,:,0]
+                    
                     par_obj.gt_sum[count] = np.sum(gt_im)
                 
                 
@@ -617,7 +617,7 @@ def eval_goto_img_fn(im_num, par_obj, int_obj):
     
     if ( par_obj.file_ext == 'png'):
         imStr = str(par_obj.file_array[b])
-        imRGB = pylab.imread(imStr)*255
+        imRGB = np.array(PIL.Image.open(imStr))*255
     if ( par_obj.file_ext == 'tif' or  par_obj.file_ext == 'tiff'):
         imStr = str(par_obj.file_array[b])
         temp = Tiff_Controller(imStr)
@@ -656,7 +656,7 @@ def eval_goto_img_fn(im_num, par_obj, int_obj):
         int_obj.plt1.lines.pop(0)
     par_obj.newImg = newImg
     int_obj.plt1.cla()
-    int_obj.plt1.imshow(255-newImg)
+    int_obj.plt1.imshow(newImg)
     int_obj.draw_saved_dots_and_roi()
     int_obj.plt1.set_xticklabels([])
     int_obj.plt1.set_yticklabels([])
@@ -721,7 +721,7 @@ def import_data_fn(par_obj,file_array):
                 
             elif par_obj.file_ext =='png':
                  
-                 imRGB = pylab.imread(imStr)*255
+                 imRGB = np.array(PIL.Image.open(imStr))*255
                  par_obj.test_im_end = file_array.__len__()
                  par_obj.numCH =imRGB.shape.__len__()
                  par_obj.bitDepth = 8

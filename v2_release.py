@@ -29,7 +29,7 @@ print 'loading matplotlib.backends.backend_qt4agg'
 from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
 print 'loading matplotlib.figure'
 from matplotlib.figure import Figure
-print 'loading v2_functions'
+print 'loading v2_function'
 import v2_functions as v2
 
 
@@ -473,7 +473,7 @@ class Win_fn(QtGui.QWidget):
         #Makes sure it spans the whole figure.
         self.figure1.subplots_adjust(left=0.001, right=0.999, top=0.999, bottom=0.001)
         
-        self.plt1.imshow(im_RGB)
+        self.plt1.imshow(255-im_RGB)
 
         #Removes the tick labels
         self.plt1.set_xticklabels([])
@@ -487,7 +487,7 @@ class Win_fn(QtGui.QWidget):
         
         #Makes sure it spans the whole figure.
         self.figure2.subplots_adjust(left=0.001, right=0.999, top=0.999, bottom=0.001)
-        self.plt2.imshow(im_RGB)
+        self.plt2.imshow(255-im_RGB)
         self.plt2.set_xticklabels([])
         self.plt2.set_yticklabels([])
         
