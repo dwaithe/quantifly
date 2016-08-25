@@ -1,35 +1,19 @@
 #Main script for running QuantiFly training.
-print 'loading time'
 import time
-print 'loading np'
 import numpy as np
-print 'loading PyQT4'
-
 from PyQt4 import QtGui, QtCore,QtWebKit
-print 'loading errno'
 import errno
-print 'loading os'
 import os
-print 'loading os.path'
 import os.path
-print 'loading re'
 import re
-print 'loading cPickle'
 import cPickle as pickle
-print 'loading sys'
 import sys
-print 'loading scipy.special'
 from scipy.special import _ufuncs_cxx
-print 'loading sklearn.utils.lgamma'
 import sklearn.utils.lgamma
 from gnu import return_license
-print 'loading  matplotlib.lines'
 import matplotlib.lines as lines
-print 'loading matplotlib.backends.backend_qt4agg'
 from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
-print 'loading matplotlib.figure'
 from matplotlib.figure import Figure
-print 'loading v2_function'
 import v2_functions as v2
 
 

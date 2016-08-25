@@ -1,5 +1,4 @@
 #Experimental interface
-import pylab
 from PyQt4 import QtGui, QtCore, Qt, QtWebKit
 import time
 
