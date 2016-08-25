@@ -1,13 +1,24 @@
+print 'loading PyQt4'
 from PyQt4 import QtGui, QtCore, Qt
+print 'loading PIL image'
 import PIL.Image
+print 'loading numpy'
 import numpy as np
+print 'loading os'
 import os
+print 'loading vigra'
 import vigra
+print 'loading pylab'
 import pylab
+print 'loading csv'
 import csv
+print 'loading time'
 import time
+print 'loading sklearn.ensemble'
 from sklearn.ensemble import ExtraTreesRegressor
+print 'loading cPickle'
 import cPickle as pickle
+print 'loading scipy.ndimage'
 from scipy.ndimage import filters
 
 """QuantiFly Software v2.0
