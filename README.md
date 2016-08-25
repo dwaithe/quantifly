@@ -11,13 +11,13 @@
 
 <H2>QuantiFly Software</H2>
 <p> The software which is available through the following link allows immediate access to the QuantiFly technique:
-<p><a href ="http://sara.molbiol.ox.ac.uk/dwaithe/download_page.html#QuantiFly">Click for downloads</a></p>
+<p><a href ="https://github.com/dwaithe/quantifly/releases/tag/2.0">Click for downloads</a></p>
 <H3>Manual</H3>
 <p> A detailed manual for QuantiFly can be downloaded here:</p>
-<p><a href ="http://sara.molbiol.ox.ac.uk/dwaithe/download_page.html#QuantiFly">Click for downloads</a></p>
+<p><a href ="https://github.com/dwaithe/quantifly/releases/tag/2.0">Click for downloads</a></p>
 <H3>Datasets</H3>
 <p> QuantiFly has eight test datasets which can be downloaded from the following page:</p>
-<p><a href ="http://sara.molbiol.ox.ac.uk/dwaithe/download_page.html#QuantiFly">Click for downloads</a></p>
+<p><a href ="https://github.com/dwaithe/quantifly/releases/tag/2.0">Click for downloads</a></p>
 
 <H3>FAQ</H3>
 <p>Q: I have found a bug in the code how can I report it? A: Goto <a href="https://github.com/dwaithe/quantifly/issues">https://github.com/dwaithe/quantifly/issues</a>. You can report issues or ask any questions here.</p>
