@@ -777,7 +777,7 @@ def save_output_data_fn(par_obj,int_obj):
     count = -1
     for b in par_obj.left_2_calc:
         frames =par_obj.frames_2_load[b]
-        imStr = str(par_obj.file_array[count])
+        imStr = str(par_obj.file_array[count+1])
         for i in frames:
             count = count+1
             n = str(count)
